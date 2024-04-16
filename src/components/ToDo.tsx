@@ -2,6 +2,9 @@ import React from "react";
 import { IToDo, toDoState } from "../atoms";
 import { useSetRecoilState } from "recoil";
 
+//1) Find to do based on id [2]
+//2)
+
 function ToDo({ text, category, id }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -9,6 +12,10 @@ function ToDo({ text, category, id }: IToDo) {
     const {
       currentTarget: { name },
     } = event;
+    setToDos((oldToDos) => {
+      const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
+      return oldToDos;
+    });
   };
   return (
     <li>
